@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.episode-layout {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 100vh;
+}
+
+.episode-box {
+  padding: .5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 1px solid black;
+  padding: .5rem;
+  position: sticky;
+  top: 0;
+}
