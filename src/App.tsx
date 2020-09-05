@@ -1,20 +1,8 @@
 import React from 'react'
 import { Store } from './Store'
+import { IEpisode, IAction } from './interfaces'
 
 
-interface IEpisode {
-  airdate: string
-  airstamp: string
-  airtime: string
-  id: number
-  image: {medium: string, original: string}
-  name: string
-  number: number
-  runtime: number
-  season: number
-  summary: string
-  url: string
-}
 
 export default function App():JSX.Element {
   const {state, dispatch} = React.useContext(Store)
@@ -31,7 +19,12 @@ export default function App():JSX.Element {
       payload: dataJSON._embedded.episodes
     })
   }
-  console.log(state)
+
+  const toggleFavAction = (episode: IEpisode): IAction => dispatch({
+    type: 'ADD_FAV',
+    payload: episode
+  })
+
    return (
     <React.Fragment>
       <header className="header">
@@ -45,6 +38,7 @@ export default function App():JSX.Element {
             <div className="">{episode.name}</div>
             <section>
               <div>Season: {episode.season} Episode: {episode.number}</div>
+              <button type="button" onClick={() => toggleFavAction(episode)}></button>
             </section>
           </section>
         ))}
